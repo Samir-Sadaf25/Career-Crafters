@@ -17,7 +17,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen px-6">
+    <div className="flex flex-col md:flex-row lg:flex-row-reverse items-center justify-center min-h-screen px-6">
       {/* Lottie Animation */}
       <div className="  justify-center">
         <Lottie
