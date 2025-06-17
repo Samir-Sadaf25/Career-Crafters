@@ -26,3 +26,4 @@ package.json
 eslint.config.js
 package-lock.json
 vite.config.js
+.env.local

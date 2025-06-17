@@ -1,22 +1,50 @@
 import { Link, NavLink } from "react-router";
 import { FaUserCircle } from "react-icons/fa";
+import { use } from "react";
+import { AuthContext } from "../Provider/AuthContext";
+import { Bounce, toast } from "react-toastify";
 
 const Navbar = () => {
-//   const { user, logout } = useAuthContext(); // Replace with your auth logic
+  const { user, logOut } = use(AuthContext); // Replace with your auth logic
+   
+   const notify = () => {
+    toast.success('Log Out Successfully', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+  const handleLogOut = () => {
+  
+    logOut().then(() => {
+      // Sign-out successful.
+      notify();
+    }).catch((error) => {
+      // An error happened.
+      
+    });
+  }
+
 
   const navItems = (
     <>
       <li><NavLink to="/">Home</NavLink></li>
       <li><NavLink to="/jobs">All Jobs</NavLink></li>
       {/* {user?.role === "employer" && ( */}
-        <li><NavLink to="/add-jobs">Add Job</NavLink></li>
+      <li><NavLink to="/add-jobs">Add Job</NavLink></li>
       {/* )} */}
-      {/* {user && ( */}
+      {user && (
         <>
           <li><NavLink to="/application/me">My Applications</NavLink></li>
           <li><NavLink to="/my-jobs">My Job Posts</NavLink></li>
         </>
-      {/* )} */}
+      )}
     </>
   );
 
@@ -37,21 +65,26 @@ const Navbar = () => {
 
         {/* User & Auth */}
         <div className="flex items-center gap-3">
-          {/* {user ? ( */}
-            {/* <> */}
-              <div className="tooltip tooltip-bottom" >
-                <FaUserCircle className="text-2xl" />
-              </div>
-              <button  className="btn btn-outline btn-sm">
-                Logout
-              </button>
-            {/* </> */}
-          {/* ) : ( */}
-            <Link to="/login" className="btn btn-primary btn-sm">
-              Login
-            </Link>
-          {/* )} */}
-        </div>
+  {user ? (
+    <>
+      <div className="tooltip tooltip-bottom" data-tip={user.email}>
+        <FaUserCircle className="text-2xl" />
+      </div>
+      <button onClick={handleLogOut} className="btn btn-outline btn-sm">
+        Logout
+      </button>
+    </>
+  ) : (
+    <>
+      <Link to="/login" className="btn btn-primary btn-outline">
+        Login
+      </Link>
+      <Link to="/register" className="btn btn-primary btn-outline">
+        Register
+      </Link>
+    </>
+  )}
+</div>
 
         {/* Mobile Menu */}
         <div className="lg:hidden dropdown dropdown-end">
