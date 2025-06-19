@@ -24,24 +24,24 @@ const Jobs = () => {
     }, [])
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h2 className="text-2xl font-bold mb-6 text-primary">Available Jobs</h2>
+        <section className="container mx-auto px-4 py-10">
+            <h2 className="text-2xl font-bold text-center mb-8 text-primary">Featured Opportunities</h2>
 
-            {loading && <p>Loading...</p>}
-            {error && <p className="text-error">Failed to load jobs.</p>}
+            {loading && <p className="text-center">Loading jobs...</p>}
+            {error && <p className="text-center text-error">Something went wrong!</p>}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {jobs.slice(0, 6).map((job) => (
                     <JobCard key={job._id} job={job} />
                 ))}
             </div>
-            <div className="text-center mt-8">
-                <Link to="/Alljobs">
+
+            <div className="text-center mt-10">
+                <Link to="/jobs">
                     <button className="btn btn-outline btn-primary">See All Jobs</button>
                 </Link>
             </div>
-        </div>
-
+        </section>
     );
 };
 
