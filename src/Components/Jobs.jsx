@@ -37,7 +37,7 @@ const Jobs = () => {
             </div>
 
             <div className="text-center mt-10">
-                <Link to="/jobs">
+                <Link to="/AllJobs">
                     <button className="btn btn-outline btn-primary">See All Jobs</button>
                 </Link>
             </div>

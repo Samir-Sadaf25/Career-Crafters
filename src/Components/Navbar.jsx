@@ -35,7 +35,7 @@ const Navbar = () => {
   const navItems = (
     <>
       <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/jobs">All Jobs</NavLink></li>
+      <li><NavLink to="/AllJobs">All Jobs</NavLink></li>
       {/* {user?.role === "employer" && ( */}
       <li><NavLink to="/add-jobs">Add Job</NavLink></li>
       {/* )} */}

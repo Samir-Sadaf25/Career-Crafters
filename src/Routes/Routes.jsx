@@ -5,6 +5,7 @@ import MainLayout from "../Layouts/MainLayout";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import AllJobs from "../pages/AllJobs";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
         {
            path:'/login',
            Component:Login
+        },
+        {
+          path: '/AllJobs',
+          Component: AllJobs
         }
 
     ]
