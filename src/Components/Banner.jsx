@@ -10,7 +10,7 @@ const Banner = () => {
                 className="md:w-1/2 space-y-6  text-center md:text-left lg:ml-28 justify-self-center"
                 initial={{ x: -60, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 1 }}
             >
                 <h1 className="text-4xl font-bold text-primary">
                     Find Your Dream Job with CareerCrafters
