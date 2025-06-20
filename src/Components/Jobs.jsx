@@ -15,7 +15,7 @@ const Jobs = () => {
                 setError(false);
 
                 const response = await axios.get('http://localhost:3000/jobs')
-                console.log(response.data);
+                
                 setJobs(response.data);
             } catch (error) {
                 setError(true);

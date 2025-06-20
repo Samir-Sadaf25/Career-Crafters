@@ -57,7 +57,7 @@ const JobCard = ({ job }) => {
 
       {/* CTA */}
       <div className="text-right">
-        <Link to={`/jobs/details/${title.toLowerCase().replace(/\s+/g, "-")}`} className="btn btn-primary btn-sm">
+        <Link to={`/job-details/${job._id}`} className="btn btn-primary btn-sm">
           View Details
         </Link>
       </div>
