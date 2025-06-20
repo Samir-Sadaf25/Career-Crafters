@@ -25,8 +25,8 @@ const Jobs = () => {
 
     return (
         <section className="container mx-auto px-4 py-10">
-            <h2 className="text-2xl font-bold text-center mb-8 text-primary">Featured Opportunities</h2>
-
+            <h2 className="text-2xl font-bold text-center mb-4 text-primary">Popular Jobs</h2>
+            <p className='text-center text-gray-500 mb-20'>Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
             {loading && <p className="text-center">Loading jobs...</p>}
             {error && <p className="text-center text-error">Something went wrong!</p>}
 

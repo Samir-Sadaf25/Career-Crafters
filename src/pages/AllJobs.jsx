@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import JobCard from "../Components/JobCard";
+import LeftPanel from "../Components/LeftPanel";
 
 const AllJobs = () => {
     const [jobs, setJobs] = useState([]);
@@ -22,20 +23,18 @@ const AllJobs = () => {
     }, [])
 
     return (
-        <section className="container mx-auto px-4 py-10">
-            <h2 className="text-3xl font-bold text-center text-primary mb-6">
-                All Available Jobs
-            </h2>
+        <div className="container mx-auto px-4 py-10">
+            <h2 className="text-3xl font-bold text-center text-primary mb-10">All Available Jobs</h2>
 
-            {loading && <p className="text-center">Loading all jobs...</p>}
-            {error && <p className="text-center text-error">Failed to load jobs.</p>}
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {jobs.map((job) => (
-                    <JobCard key={job._id} job={job} />
-                ))}
+            <div className="flex flex-col md:flex-row gap-8">
+                <LeftPanel></LeftPanel>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
+                    {jobs.map((job) => (
+                        <JobCard key={job._id} job={job} />
+                    ))}
+                </div>
             </div>
-        </section>
+        </div>
     );
 };
 
