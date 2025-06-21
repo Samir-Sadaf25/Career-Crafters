@@ -11,6 +11,7 @@ import Lottie from "lottie-react";
 const Login = () => {
     const { setUser, signIn } = useContext(AuthContext);
     const location = useLocation();
+    const from = location.state || '/';
     const navigate = useNavigate();
     const [errorMsg, setError] = useState('');
     const provider = new GoogleAuthProvider;
@@ -28,9 +29,9 @@ const Login = () => {
             transition: Bounce,
         });
     };
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    // const handleChange = (e) => {
+    //     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // };
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -42,9 +43,8 @@ const Login = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                navigate(location.state ? location.state : "/");
                 notify();
-                navigate('/');
+                navigate(from);
             })
             .catch((error) => {
                 setError(error.code);
@@ -56,7 +56,7 @@ const Login = () => {
 
                 setUser(result.user);
                 notify();
-                navigate('/');
+                navigate(from);
             }).catch(error => {
 
                 const errorMessge = error.message;
@@ -84,7 +84,7 @@ const Login = () => {
                             type="email"
                             name="email"
                             className="input input-bordered w-full"
-                            onChange={handleChange}
+                        
                             required
                         />
                     </div>
@@ -94,7 +94,6 @@ const Login = () => {
                             type="password"
                             name="password"
                             className="input input-bordered w-full"
-                            onChange={handleChange}
                             required
                         />
                     </div>
