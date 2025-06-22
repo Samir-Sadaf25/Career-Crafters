@@ -22,6 +22,7 @@ const JobApply = () => {
             phone:applicationData.phone,
             jobId: id,
             email: user.email,
+            userId : user.uid
         }
         axios.post('http://localhost:3000/applications',applicantsData)
         .then(res => {

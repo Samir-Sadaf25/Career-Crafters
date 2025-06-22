@@ -27,7 +27,7 @@ const JobCard = ({ job }) => {
             <p className="text-xs text-base-content/60">{new Date(datePosted).toDateString()}</p>
           </div>
         </div>
-        <MdVerified className="text-success text-xl" title="Verified" />
+        <MdVerified className="text-blue-500 text-xl" title="Verified" />
       </div>
 
       {/* Job Info */}

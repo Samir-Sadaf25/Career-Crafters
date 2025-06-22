@@ -52,8 +52,8 @@ const JobDetails = () => {
       {/* Main Content */}
 
       <div className="md:w-2/3 space-y-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-          <div className="bg-base-100 hover:bg-blue-100 border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 ">
+          <div className="bg-base-100 hover:shadow-xs border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
             <FaBriefcase className="text-primary text-xl" />
             <div>
               <p className="text-sm text-base-content/60">Employment Type</p>
@@ -61,7 +61,7 @@ const JobDetails = () => {
             </div>
           </div>
 
-          <div className="bg-base-100 hover:bg-blue-100 border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm ">
+          <div className="bg-base-100 hover:shadow-xs border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm ">
             <FaMapMarkerAlt className="text-primary text-xl" />
             <div>
               <p className="text-sm text-base-content/60">Location</p>
@@ -69,7 +69,7 @@ const JobDetails = () => {
             </div>
           </div>
 
-          <div className="bg-base-100 hover:bg-blue-100 border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
+          <div className="bg-base-100 hover:shadow-xs border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
             <FaClock className="text-primary text-xl" />
             <div>
               <p className="text-sm text-base-content/60">Job Type</p>
@@ -77,7 +77,7 @@ const JobDetails = () => {
             </div>
           </div>
 
-          <div className="bg-base-100 hover:bg-blue-100 border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
+          <div className="bg-base-100 hover:shadow-xs border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
             <FaClock className="text-primary text-xl" />
             <div>
               <p className="text-sm text-base-content/60">Experience</p>
@@ -85,7 +85,7 @@ const JobDetails = () => {
             </div>
           </div>
 
-          <div className="bg-base-100 hover:bg-blue-100 border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
+          <div className="bg-base-100 hover:shadow-xs border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
             <FaGraduationCap className="text-primary text-xl" />
             <div>
               <p className="text-sm text-base-content/60">Qualification</p>
@@ -93,7 +93,7 @@ const JobDetails = () => {
             </div>
           </div>
 
-          <div className="bg-base-100 hover:bg-blue-100 border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
+          <div className="bg-base-100 hover:shadow-xs border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
             <FaMoneyBillWave className="text-primary text-xl" />
             <div>
               <p className="text-sm text-base-content/60">Salary Range</p>
@@ -103,7 +103,7 @@ const JobDetails = () => {
             </div>
           </div>
 
-          <div className="bg-base-100 hover:bg-blue-100 border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
+          <div className="bg-base-100 hover:shadow-xs border border-base-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
             <FaCalendarAlt className="text-primary text-xl" />
             <div>
               <p className="text-sm text-base-content/60">Date Posted</p>

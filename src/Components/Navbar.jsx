@@ -6,7 +6,6 @@ import { Bounce, toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext); // Replace with your auth logic
-   
    const notify = () => {
     toast.success('Log Out Successfully', {
       position: "top-right",
@@ -41,7 +40,7 @@ const Navbar = () => {
       {/* )} */}
       {user && (
         <>
-          <li><NavLink to="/application/me">My Applications</NavLink></li>
+          <li><NavLink to="/MyApplication">My Applications</NavLink></li>
           <li><NavLink to="/my-jobs">My Job Posts</NavLink></li>
         </>
       )}
