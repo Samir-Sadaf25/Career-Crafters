@@ -1,9 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, use } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Link } from "react-router";
+import { AuthContext } from "../Provider/AuthContext";
 
-const MyApplicationCard = ({ job, onWithdraw }) => {
+const MyApplicationCard = ({ job }) => {
+    const {user} = use(AuthContext);
     const {
         _id,
         title,
@@ -17,12 +19,10 @@ const MyApplicationCard = ({ job, onWithdraw }) => {
         company_logo
     } = job;
 
-    //const [isLeftRevealed, setIsLeftRevealed] = useState(false);
+
     const [isRightRevealed, setIsRightRevealed] = useState(false);
     const x = useMotionValue(0);
     const isDragging = useRef(false);
-
-   // const leftActionsOpacity = useTransform(x, [-80, -40, 0], [1, 0.5, 0]);
     const rightActionsOpacity = useTransform(x, [0, 40, 80], [0, 0.5, 1]);
 
     const handleDragEnd = () => {
@@ -48,8 +48,20 @@ const MyApplicationCard = ({ job, onWithdraw }) => {
     };
 
     const handleAction = (action) => {
-        console.log(`Executing action: ${action}`);
-        resetCard();
+        if (action === "Delete") {
+            if (window.confirm("Withdraw your application for this job?")) {
+                fetch(`http://localhost:3000/applications/${job.jobId}`, {
+                    method: "DELETE",
+                })
+                    .then((res) => res.json())
+                    .then(() => {
+                        //onWithdraw(_id); // this removes the job from UI
+                        resetCard();
+                    });
+            }
+        } else {
+            resetCard();
+        }
     };
     return (
         <div className="relative overflow-hidden bg-base-100 border border-base-200 rounded-xl shadow-sm">
@@ -91,7 +103,7 @@ const MyApplicationCard = ({ job, onWithdraw }) => {
                     onDragEnd={handleDragEnd}
                     initial={{ x: 0 }}
                     animate={{
-                        x:  isRightRevealed ? -80 : 0,
+                        x: isRightRevealed ? -80 : 0,
                     }}
                     transition={{
                         type: "spring",
@@ -127,7 +139,7 @@ const MyApplicationCard = ({ job, onWithdraw }) => {
                             <span>• ${salaryRange?.min} - ${salaryRange?.max}</span>
                         </div>
                         <div className="text-right">
-                            
+
                             <Link to={`/jobs/details/${title.toLowerCase().replace(/\s+/g, "-")}`} className="btn btn-primary btn-sm mt-2">
                                 View Details
                             </Link>
