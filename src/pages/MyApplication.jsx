@@ -14,10 +14,20 @@ const MyApplications = () => {
     }
   }, [user?.uid]);
 
-  
+  const handleWithdraw = (applicationId) => {
+    fetch(`http://localhost:3000/applications/${applicationId}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setAppliedJobs((prev) =>
+          prev.filter((job) => job.applicationId !== applicationId)
+        );
+      });
+  };
 
   return (
-    <section className="container mx-auto px-4 py-10">
+    <section className="container mx-auto px-4 py-10 mb-70">
       <h2 className="text-2xl font-bold text-primary mb-6 text-center">
         📁 My Applications
       </h2>
@@ -27,6 +37,7 @@ const MyApplications = () => {
             <MyApplicationCard
               key={job._id}
               job={job}
+              onWithdraw={handleWithdraw}
             />
           ))}
         </div>
