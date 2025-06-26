@@ -36,7 +36,7 @@ const Navbar = () => {
       <li><NavLink to="/">Home</NavLink></li>
       <li><NavLink to="/AllJobs">All Jobs</NavLink></li>
       {/* {user?.role === "employer" && ( */}
-      <li><NavLink to="/add-jobs">Add Job</NavLink></li>
+      <li><NavLink to="/AddJob">Add Job</NavLink></li>
       {/* )} */}
       {user && (
         <>
