@@ -22,8 +22,8 @@ const AddJob = () => {
     datePosted: new Date().toISOString().split("T")[0],
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    console.log("🟢 Submitting form", form);
     axios
       .post("http://localhost:3000/jobs", form)
       .then((res) => {
@@ -32,12 +32,10 @@ const AddJob = () => {
           icon: "success",
           draggable: true,
         });
-        navigate('/AllJobs')
-        form.reset();
+        navigate("/AllJobs");
       })
       .catch((error) => console.log(error));
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name.includes(".")) {
@@ -138,6 +136,11 @@ const AddJob = () => {
                   className="input input-bordered w-full mb-2"
                   value={req}
                   onChange={(e) => updateRequirement(i, e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                    }
+                  }}
                 />
               ))}
               <button
@@ -190,7 +193,7 @@ const AddJob = () => {
   return (
     <section className="max-w-2xl mx-auto p-6 bg-white rounded shadow-md mt-10">
       <h2 className="text-2xl font-bold text-center mb-6">📝 Add Job</h2>
-      <form onSubmit={handleSubmit}>
+      <div>
         {renderStep()}
 
         <div className="mt-6 flex justify-between">
@@ -202,6 +205,7 @@ const AddJob = () => {
           >
             Back
           </button>
+
           {step < 3 ? (
             <button
               type="button"
@@ -211,12 +215,16 @@ const AddJob = () => {
               Next
             </button>
           ) : (
-            <button type="submit" className="btn btn-success">
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={handleSubmit}
+            >
               Submit
             </button>
           )}
         </div>
-      </form>
+      </div>
     </section>
   );
 };
