@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { use, useState } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthContext";
 
 const AddJob = () => {
   const [step, setStep] = useState(1);
+  const {user} = use(AuthContext);
   const navigate = useNavigate();
   const [form, setForm] = useState({
     title: "",
@@ -25,7 +27,7 @@ const AddJob = () => {
   const handleSubmit = () => {
     console.log("🟢 Submitting form", form);
     axios
-      .post("http://localhost:3000/jobs", form)
+      .post("http://localhost:3000/jobs", {...form,userId:user.uid})
       .then((res) => {
         Swal.fire({
           title: "Posted Successfully",
@@ -34,7 +36,9 @@ const AddJob = () => {
         });
         navigate("/AllJobs");
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>{
+        
+      });
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
