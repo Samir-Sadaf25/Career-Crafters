@@ -15,7 +15,7 @@ const LeftPanel = () => {
     };
 
     return (
-        <div className="bg-base-100 border border-base-200 rounded-xl p-6 w-full md:w-80 h-fit sticky top-4 shadow-md">
+        <div className="bg-base-100 border border-base-200 rounded-xl p-6 w-full md:w-80 h-fit lg:sticky top-4 shadow-md">
             <h2 className="text-xl font-semibold text-primary mb-4">Job Filters</h2>
 
             <div className="mb-4">

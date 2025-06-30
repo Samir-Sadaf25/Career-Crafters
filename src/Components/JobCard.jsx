@@ -1,64 +1,68 @@
 import { Link } from "react-router";
-import { MdWork, MdLocationOn, MdAccessTime, MdOutlineAccessTime, MdStar, MdVerified } from "react-icons/md";
+import {
+  MdWork,
+  MdLocationOn,
+  MdAccessTime,
+  MdAttachMoney,
+} from "react-icons/md";
 
 const JobCard = ({ job }) => {
   const {
+    _id,
     title,
     company,
     location,
     jobType,
     employmentType,
-    experience,
     salaryRange,
-    description,
-    requirements,
     datePosted,
-    company_logo
+    company_logo,
   } = job;
 
   return (
-    <div className="bg-base-100 rounded-xl shadow-md border border-base-200 p-5 space-y-4 hover:shadow-lg transition duration-300">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <img src={company_logo || "/placeholder-logo.png"} alt={company} className="w-10 h-10 rounded-full object-cover" />
-          <div>
-            <h3 className="font-bold text-base-content">{company}</h3>
-            <p className="text-xs text-base-content/60">{new Date(datePosted).toDateString()}</p>
-          </div>
+    <div className="bg-white border border-gray-200 rounded-lg p-5 space-y-3 shadow-sm hover:shadow-md transition-all duration-200">
+      {/* Top */}
+      <div className="flex items-center gap-4">
+        <img
+          src={company_logo || "/placeholder-logo.png"}
+          alt={company}
+          className="w-12 h-12 rounded-full object-cover border border-gray-300"
+        />
+        <div>
+          <h3 className="text-base font-medium text-gray-800">{company}</h3>
+          <p className="text-sm text-gray-500">
+            Posted {timeAgo(datePosted)}
+          </p>
         </div>
-        <MdVerified className="text-blue-500 text-xl" title="Verified" />
       </div>
 
-      {/* Job Info */}
-      <div className="space-y-1">
-        <h2 className="text-lg font-semibold text-primary">{title}</h2>
-        <p className="text-sm text-base-content/80 line-clamp-2">{description}</p>
-      </div>
+      {/* Title */}
+      <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
 
-      {/* Meta */}
-      <div className="flex flex-wrap gap-2 text-sm text-base-content/80">
-        <div className="flex items-center gap-1"><MdWork /> {employmentType}</div>
-        <div className="flex items-center gap-1"><MdOutlineAccessTime /> {experience}</div>
-        <div className="flex items-center gap-1"><MdAccessTime /> {jobType}</div>
-        <div className="flex items-center gap-1">
-          💵 ${salaryRange.min} - ${salaryRange.max}
-        </div>
-        <div className="flex items-center gap-1"><MdLocationOn /> {location}</div>
-        <div className="flex items-center gap-1"><MdStar className="text-warning" /> 4.8</div>
-      </div>
-
-      {/* Skill Tags */}
-      <div className="flex flex-wrap gap-2 mt-2">
-        {requirements?.slice(0, 2).map((skill, idx) => (
-          <span key={idx} className="badge badge-outline badge-sm bg-blue-100">{skill}</span>
-        ))}
+      {/* Info Row */}
+      <div className="flex flex-wrap gap-3 text-sm text-gray-600">
+        <span className="flex items-center gap-1">
+          <MdWork /> {employmentType}
+        </span>
+        <span className="flex items-center gap-1">
+          <MdAccessTime /> {jobType}
+        </span>
+        <span className="flex items-center gap-1">
+          <MdAttachMoney className="text-blue-500" />
+          ${salaryRange.min} - ${salaryRange.max}/mo
+        </span>
+        <span className="flex items-center gap-1">
+          <MdLocationOn /> {location}
+        </span>
       </div>
 
       {/* CTA */}
-      <div className="text-right">
-        <Link to={`/job-details/${job._id}`} className="btn btn-primary btn-sm">
-          View Details
+      <div className="pt-2">
+        <Link
+          to={`/job-details/${_id}`}
+          className="text-blue-600 hover:underline text-sm font-medium"
+        >
+          View Details →
         </Link>
       </div>
     </div>
@@ -66,3 +70,10 @@ const JobCard = ({ job }) => {
 };
 
 export default JobCard;
+
+// Utility to show "Posted 3 days ago"
+const timeAgo = (isoDate) => {
+  const days =
+    Math.floor((new Date() - new Date(isoDate)) / (1000 * 60 * 60 * 24)) || 0;
+  return days === 0 ? "Today" : `${days} day${days > 1 ? "s" : ""} ago`;
+};
