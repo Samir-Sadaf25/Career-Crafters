@@ -1,12 +1,41 @@
-# React + Vite
+# 💼 CareerCrafters
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CareerCrafters is a full-stack job listing platform that enables users to browse and post job opportunities. It showcases clean UI design, RESTful API integration, and seamless deployment using modern web technologies.
 
-Currently, two official plugins are available:
+## 🔧 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend
+- React.js (with React Router)
+- Axios for HTTP requests
+- Tailwind CSS for styling
+- Deployed on Netlify
 
-## Expanding the ESLint configuration
+### Backend
+- Node.js & Express.js
+- MongoDB with Mongoose ORM
+- CORS and dotenv middleware
+- Deployed on Vercel
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Features
+- 🧭 **Browse and filter job listings** in an intuitive, responsive UI
+- ✍️ **Apply for a job** directly through the application form
+- 🔎 **View your applied jobs** on a dedicated route (`/my-applications`)
+- 🗂️ **Detailed job pages** with role, company, and compensation info
+- ⚙️ **RESTful API integration** between client and server
+- 📡 **Responsive design** for a smooth experience on all devices
+- 🔍 View job details with dedicated route
+
+---
+
+## Server-side Repo :
+https://github.com/Samir-Sadaf25/Career-Crafters-Server
+
+## 🌐 Live Links
+
+- Frontend: [https://dynamic-sundae-55776c.netlify.app](https://dynamic-sundae-55776c.netlify.app)
+- Backend API: [https://career-crafters-server.vercel.app](https://career-crafters-server.vercel.app)
+
+---
+
